@@ -1,0 +1,27 @@
+day03
+
+数据控制语言（DCL）
+
+- 查看授权
+  - 格式：show grants [for 'user'@'localhost']
+  - 示例：show grants [for 'root'@'localhost']
+  - 说明：查看指定的用户权限，若不指定用户，则查看的是当前登录的用户
+- 创建用户
+  - 格式：create user 'user'@'host' identified by 'password'
+  - 示例：create user 'user'@'10.20.159.%'  identified by '123456'
+  - 说明：%是通配符
+- 用户授权
+  - 格式：grant   权限  privilages  on 库.表 to "user"@'host' identified by 'password'
+  - 示例： grant all privileges on test.user to 'user'@'10.20.159.%' identified by '123456‘
+  - 说明：
+    - 权限可以是：insert,delete,update,select, all是所有的权限
+    - %表示的是任意主机
+    - *表示的是所有的库和表
+- 刷新权限：flush privileges
+- 取消权限
+  - 格式：revoke  权限 privileges on 库.表 from 'user'@'host'
+  - 示例：revoke all privileges on test.* from 'user'@'10.20.159.%';
+    
+- 删除用户
+  - 格式：drop  user 'user'@'localhost'
+  - 示例：drop user 'user'@'10.20.159.%';
